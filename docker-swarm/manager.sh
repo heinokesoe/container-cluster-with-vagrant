@@ -1,18 +1,24 @@
-#!/bin/bash
+#!/bin/sh
 
-for (( i=1; i<=MANAGER_NODE_COUNT; i++ )); do
-    echo "10.10.10.1$i manager$i manager$i" >> /etc/hosts
+m=1
+while [ "$m" -le $MANAGER_NODE_COUNT ]
+do
+    echo "10.10.10.1$m manager$m manager$m" >> /etc/hosts
+    m=$((m + 1))
 done
 
-for (( i=1; i<=WORKER_NODE_COUNT; i++ )); do
-    echo "10.10.10.2$i worker$i worker$i" >> /etc/hosts
+w=1
+while [ "$w" -le $WORKER_NODE_COUNT ]
+do
+    echo "10.10.10.2$w worker$w worker$w" >> /etc/hosts
+    w=$((w + 1))
 done
 
-if [[ "$(cat /etc/hostname)" == "manager1" ]]; then
+if [ "$(cat /etc/hostname)" = "manager1" ]; then
     docker swarm init --advertise-addr 10.10.10.11
     docker swarm join-token manager | grep token > /managerjoin.sh
     docker swarm join-token worker | grep token > /workerjoin.sh
 else
     sshpass -p "vagrant" scp -o UserKnownHostsFile=/dev/null -o StrictHostKeyChecking=no vagrant@10.10.10.11:/managerjoin.sh /managerjoin.sh
-    bash /managerjoin.sh
+    sh /managerjoin.sh
 fi
