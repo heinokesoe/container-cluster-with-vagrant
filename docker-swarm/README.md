@@ -18,6 +18,7 @@ Node count for worker  = 2
 ### You can change that values in Vagrantfile.
 
 ## Available Boxes
-- [heinokesoe/ubuntu-focal-with-docker](https://app.vagrantup.com/heinokesoe/boxes/ubuntu-focal-with-docker)
-- [heinokesoe/rockylinux-8-with-docker](https://app.vagrantup.com/heinokesoe/boxes/rockylinux-8-with-docker)
+- [heinokesoe/alpine-3.16-with-docker (137MB)](https://app.vagrantup.com/heinokesoe/boxes/alpine-3.16-with-docker)
+- [heinokesoe/ubuntu-focal-with-docker (1.17GB)](https://app.vagrantup.com/heinokesoe/boxes/ubuntu-focal-with-docker)
+- [heinokesoe/rockylinux-8-with-docker (1.16GB)](https://app.vagrantup.com/heinokesoe/boxes/rockylinux-8-with-docker)
 ### You can choose what you want. Default is ubuntu box.
